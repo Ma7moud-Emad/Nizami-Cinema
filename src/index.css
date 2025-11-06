@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+/* Custom dark variant for dark mode support */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/**
+ * Global body styles
+ * Sets Roboto as the default font family throughout the application
+ */
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+/* 
+ * CAROUSEL STYLES
+ * Custom styles for react-multi-carousel component
+ */
+
+/* Base dot styling for carousel navigation */
+li.react-multi-carousel-dot button {
+  @apply bg-black dark:bg-white border border-black dark:border-white mr-2 w-2 h-2 sm:w-3 sm:h-3 cursor-pointer;
+  /* 
+    - Light mode: black background with black border
+    - Dark mode: white background with white border  
+    - Responsive sizing: smaller on mobile, slightly larger on small screens and up
+    - Right margin for spacing between dots
+    - Pointer cursor for better UX
+  */
+}
+
+/* Hover state for carousel dots */
+li.react-multi-carousel-dot:hover button {
+  @apply bg-black/70 dark:bg-white/70;
+  /* Semi-transparent background on hover for visual feedback */
+}
+
+/* Active dot styling - indicates current slide */
+li.react-multi-carousel-dot.react-multi-carousel-dot--active button {
+  @apply bg-white dark:bg-black;
+  /* 
+    - Light mode: white dot on black background (inverted)
+    - Dark mode: black dot on white background (inverted)
+    - Creates clear visual distinction for active state
+  */
+}
+
+/* 
+ * HERO CAROUSEL STYLES
+ * Special styling for carousel used in hero sections
+ */
+
+/* Ensure hero carousel track takes full viewport height */
+.hero ul.react-multi-carousel-track {
+  @apply min-h-screen;
+  /* Full viewport height for dramatic hero sections */
+}
+
+/* Custom dot list container for hero carousel */
+.hero ul.react-multi-carousel-dot-list {
+  @apply px-4 z-50 flex items-center justify-start flex-nowrap gap-2 bottom-14 overflow-x-scroll;
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+  /*
+    - px-4: Horizontal padding for breathing room
+    - z-50: High z-index to ensure visibility over other content
+    - flex: Horizontal layout for thumbnail navigation
+    - items-center: Vertically center thumbnails
+    - justify-start: Left-align thumbnails
+    - flex-nowrap: Prevent wrapping to single line
+    - gap-2: Spacing between thumbnails
+    - bottom-14: Position from bottom of container
+    - overflow-x-scroll: Horizontal scrolling for many thumbnails
+  */
+}
+
+/* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+.hero ul.react-multi-carousel-dot-list::-webkit-scrollbar {
+  display: none;
+}
+
+/* Base thumbnail button styling in hero carousel */
+.hero ul.react-multi-carousel-dot-list li button {
+  @apply w-24 h-24 cursor-pointer;
+  /* Fixed size for inactive thumbnails */
+}
+
+/* Active thumbnail styling - larger and more prominent */
+.hero ul.react-multi-carousel-dot-list li button.active {
+  @apply w-30 h-48;
+  /* Larger dimensions for active thumbnail to highlight current slide */
+}
+
+/* Thumbnail image styling */
+.hero ul.react-multi-carousel-dot-list li button img {
+  @apply rounded-sm h-24 object-top;
+  /*
+    - rounded-sm: Slightly rounded corners
+    - h-24: Fixed height matching button height
+    - object-top: Crop from top to maintain aspect ratio
+  */
+}
+
+/* Active thumbnail image styling */
+.hero ul.react-multi-carousel-dot-list li button.active img {
+  @apply rounded-lg h-48;
+  /*
+    - rounded-lg: More pronounced rounded corners for active state
+    - h-48: Larger height matching active button height
+    - Creates clear visual hierarchy between active and inactive states
+  */
+}
+
+/* custome styles */
+.pagination {
+  @apply pt-10;
+}
