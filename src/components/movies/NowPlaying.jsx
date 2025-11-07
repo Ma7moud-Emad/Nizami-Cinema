@@ -1,5 +1,5 @@
 import useFetch from "../../Hooks/useFetch";
-import getNowPlaying from "../../Serveries/apis/now_playing";
+import getMovies from "../../Serveries/apis";
 import Movies from "../movies/Movies";
 import SectionList from "./SectionList";
 
@@ -11,7 +11,7 @@ export default function NowPlaying() {
   // Custom hook to fetch now playing movies data
   // Parameters: query key and API function
   const { data, isPending, error } = useFetch("now_playing", () =>
-    getNowPlaying(1)
+    getMovies("now_playing", 1)
   );
 
   return (

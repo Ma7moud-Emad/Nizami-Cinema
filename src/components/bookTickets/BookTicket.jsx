@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import useFetch from "../../Hooks/useFetch";
-import getMovieDetails from "./../../Serveries/apis/movieDetails";
+import getMovieDetails from "./../../Serveries/movieDetails";
 import LoadingThreeDotsPulse from "../ui/LoadingThreeDotsPulse";
 import { useState } from "react";
 import Section from "./Section";

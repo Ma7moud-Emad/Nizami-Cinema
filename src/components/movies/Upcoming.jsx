@@ -1,7 +1,7 @@
-import getUpComing from "../../Serveries/apis/upcoming";
 import useFetch from "../../Hooks/useFetch";
 import Movies from "./Movies";
 import SectionList from "./SectionList";
+import getMovies from "../../Serveries/apis";
 
 /**
  * Upcoming component that displays upcoming movies
@@ -11,7 +11,9 @@ export default function Upcoming() {
   // Custom hook to fetch upcoming movies data
   // NOTE: There's a bug here - the query key should be "upcoming" instead of "top_rating"
   // This might cause caching issues where upcoming movies are stored under the wrong key
-  const { data, isPending, error } = useFetch("upComing", () => getUpComing(1));
+  const { data, isPending, error } = useFetch("upComing", () =>
+    getMovies("upcoming", 1)
+  );
 
   return (
     /**

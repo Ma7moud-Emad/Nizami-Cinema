@@ -1,7 +1,7 @@
 import useFetch from "../../Hooks/useFetch";
 import Movies from "./Movies";
-import getTopRating from "./../../Serveries/apis/top_rating";
 import SectionList from "./SectionList";
+import getMovies from "../../Serveries/apis";
 
 /**
  * TopRating component that displays top-rated movies
@@ -11,9 +11,9 @@ export default function TopRating() {
   // Custom hook to fetch top-rated movies data
   // Parameters:
   // - "top_rating": Query key for caching and devtools
-  // - getTopRating: API function that fetches top-rated movies
+  // - getMovies: API function that fetches top-rated movies
   const { data, isPending, error } = useFetch("top_rating", () =>
-    getTopRating(1)
+    getMovies("top_rated", 1)
   );
 
   return (

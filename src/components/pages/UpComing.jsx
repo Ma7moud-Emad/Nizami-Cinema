@@ -1,10 +1,10 @@
 import { useState } from "react";
 import useFetch from "../../Hooks/useFetch";
-import getUpComing from "../../Serveries/apis/upcoming";
 import LoadingThreeDotsPulse from "../ui/LoadingThreeDotsPulse";
 import ShortMovie from "../movie/ShortMovie";
 import SectionList from "../movies/SectionList";
 import Pagination from "../ui/Pagination";
+import getMovies from "../../Serveries/apis";
 
 /**
  * UpcomingPage component - Full page view of all upcoming movies
@@ -16,7 +16,7 @@ export default function UpcomingPage() {
   // Fetch upcoming movies data using custom hook
   // Note: Fixed query key from "top_rating" to "upcoming" for proper caching
   const { data, isPending, error } = useFetch(["upcoming", currentPage], () =>
-    getUpComing(currentPage)
+    getMovies("upcoming", currentPage)
   );
 
   // Display loading indicator while data is being fetched

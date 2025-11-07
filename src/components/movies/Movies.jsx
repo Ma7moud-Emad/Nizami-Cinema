@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import LoadingThreeDotsPulse from "./../ui/LoadingThreeDotsPulse";
@@ -12,7 +12,6 @@ export default function Movies({
   typeMovies,
 }) {
   const movies = Array.isArray(data) ? data : [];
-  const [shouldAutoPlay, setShouldAutoPlay] = useState(true);
   const ref = useRef(null);
   const responsive = {
     small: {
@@ -41,14 +40,6 @@ export default function Movies({
     },
   };
 
-  // Clean up carousel on unmount
-  useEffect(() => {
-    return () => {
-      // Disable autoplay when component unmounts
-      setShouldAutoPlay(false);
-    };
-  }, []); // Empty dependency array means this runs only on mount/unmount
-
   if (isLoading) {
     return <LoadingThreeDotsPulse />;
   }
@@ -69,8 +60,6 @@ export default function Movies({
       draggable={true}
       showDots={true}
       infinite={true}
-      autoPlay={shouldAutoPlay}
-      autoPlaySpeed={2000}
       responsive={responsive}
     >
       {movies.map((movie) => (

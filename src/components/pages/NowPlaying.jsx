@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import useFetch from "../../Hooks/useFetch";
-import getNowPlaying from "../../Serveries/apis/now_playing";
 import LoadingThreeDotsPulse from "../ui/LoadingThreeDotsPulse";
 import ShortMovie from "../movie/ShortMovie";
 import SectionList from "../movies/SectionList";
 import Pagination from "../ui/Pagination";
+import getMovies from "../../Serveries/apis";
 
 /**
  * NowPlayingPage component - Full page view of all now playing movies
@@ -17,7 +17,7 @@ export default function NowPlayingPage() {
   // Fetch now playing movies data using custom hook
   const { data, isPending, error } = useFetch(
     ["now_playing", currentPage],
-    () => getNowPlaying(currentPage)
+    () => getMovies("now_playing", currentPage)
   );
   // Scroll to 100vh when currentPage changes
   useEffect(() => {

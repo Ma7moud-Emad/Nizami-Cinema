@@ -96,9 +96,6 @@ export default function ShortMovie({
         }}
         transition={{ duration: 0.3, type: "tween", ease: "easeInOut" }}
         loading="lazy"
-        onError={(e) => {
-          e.target.src = `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`;
-        }}
       />
 
       {/* Gradient overlay for better text readability */}

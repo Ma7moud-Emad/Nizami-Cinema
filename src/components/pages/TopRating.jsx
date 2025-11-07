@@ -1,10 +1,10 @@
 import { useState } from "react";
 import useFetch from "../../Hooks/useFetch";
-import getTopRating from "../../Serveries/apis/top_rating";
 import LoadingThreeDotsPulse from "../ui/LoadingThreeDotsPulse";
 import ShortMovie from "../movie/ShortMovie";
 import SectionList from "../movies/SectionList";
 import Pagination from "../ui/Pagination";
+import getMovies from "../../Serveries/apis";
 
 /**
  * TopRatingPage component - Full page view of all top-rated movies
@@ -15,7 +15,7 @@ export default function TopRatingPage() {
   const totalPages = 20;
   // Fetch top-rated movies data using custom hook
   const { data, isPending, error } = useFetch(["top_rating", currentPage], () =>
-    getTopRating(currentPage)
+    getMovies("top_rated", currentPage)
   );
 
   // Display loading indicator while data is being fetched

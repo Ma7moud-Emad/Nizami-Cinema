@@ -1,12 +1,12 @@
 import useFetch from "../../Hooks/useFetch";
-import getPopular from "./../../Serveries/apis/popular";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useEffect, useRef, useState } from "react";
+import getMovies from "./../../Serveries/apis";
 
 export default function Hero() {
   // Fetch popular movie data using custom hook
-  const { data } = useFetch("top_rating", getPopular);
+  const { data } = useFetch("popular", () => getMovies("popular", 1));
 
   // Refs and state for managing carousel dots
   const dotsContainerRef = useRef(null);
